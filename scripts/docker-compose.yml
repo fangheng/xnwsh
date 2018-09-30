@@ -1,7 +1,7 @@
 version: '2'
 services:
-    rlsoms-apigateway-app:
-        image: rlsoms-apigateway
+    apigateway-app:
+        image: xnwsh-apigateway
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger,no-liquibase
             - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@rlsoms-registry:8761/eureka
@@ -14,7 +14,7 @@ services:
             - 8080:8080
 
     registry:
-        image: rlsoms-registry
+        image: xnwsh-registry
         volumes:
             - ./central-server-config:/central-config
         # When run with the "dev" Spring profile, the JHipster Registry will
@@ -31,7 +31,7 @@ services:
             - 8761:8761
 
     uaa-app:
-        image: uaa
+        image: xnwsh-uaa
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger,no-liquibase
             - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@rlsoms-registry:8761/eureka
