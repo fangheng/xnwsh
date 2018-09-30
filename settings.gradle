@@ -1,0 +1,2 @@
+// include ":apigateway", ":uaa", ":rmsvc", ":hmsvc", ":registry","mdatasvc"
+include ":apigateway", ":uaa", ":app", ":registry"

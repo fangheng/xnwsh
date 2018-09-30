@@ -1,0 +1,15 @@
+*.log
+.gradle/*
+scripts/mysql/*
+
+######################
+# Visual Studio Code
+######################
+.vscode/
+.settings/
+.project
+######################
+# Intellij IDEA
+######################
+*.iml
+.idea/
