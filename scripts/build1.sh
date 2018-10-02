@@ -17,7 +17,7 @@ cd ..
 
 # echo "==== building completed ===="
 
-cd ng-alain
+cd ngAlain
 echo "==== building npm install===="
 npm install 
 echo "==== building npm start===="

@@ -1,19 +1,19 @@
 version: '2'
 services:
-    apigateway-app:
+    xnwsh-apigateway-app:
         image: xnwsh-apigateway
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger,no-liquibase
-            - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@rlsoms-registry:8761/eureka
-            - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@rlsoms-registry:8761/config
-            - SPRING_DATASOURCE_URL=jdbc:mysql://rlsoms-mysql-db:3306/apigatewaydb?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/eureka
+            - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/config
+            - SPRING_DATASOURCE_URL=jdbc:mysql://xnwsh-mysql-db:3306/apigatewaydb?useUnicode=true&characterEncoding=utf8&useSSL=false
             - SPRING_DATASOURCE_USERNAME=root
-            - SPRING_DATASOURCE_PASSWORD=CrrcZnyw            
+            - SPRING_DATASOURCE_PASSWORD=xnwsh
             - JHIPSTER_SLEEP=30 # gives time for the JHipster Registry to boot before the application
         ports:
             - 8080:8080
 
-    registry:
+    xnwsh-registry:
         image: xnwsh-registry
         volumes:
             - ./central-server-config:/central-config
@@ -30,18 +30,28 @@ services:
         ports:
             - 8761:8761
 
-    uaa-app:
+    xnwsh-uaa-app:
         image: xnwsh-uaa
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger,no-liquibase
-            - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@rlsoms-registry:8761/eureka
-            - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@rlsoms-registry:8761/config
-            - SPRING_DATASOURCE_URL=jdbc:mysql://rlsoms-mysql-db:3306/uaadb?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/eureka
+            - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/config
+            - SPRING_DATASOURCE_URL=jdbc:mysql://xnwsh-mysql-db:3306/uaadb?useUnicode=true&characterEncoding=utf8&useSSL=false
             - SPRING_DATASOURCE_USERNAME=root
-            - SPRING_DATASOURCE_PASSWORD=CrrcZnyw            
+            - SPRING_DATASOURCE_PASSWORD=xnwsh
             - JHIPSTER_SLEEP=30 # gives time for the JHipster Registry to boot before the application
 
-    rlsoms-mysql-db:
+    xnwsh-app-app:
+        image: xnwsh-app
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger,no-liquibase
+            - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/eureka
+            - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/config
+            - SPRING_DATASOURCE_URL=jdbc:mysql://xnwsh-mysql-db:3306/uaadb?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - SPRING_DATASOURCE_USERNAME=root
+            - SPRING_DATASOURCE_PASSWORD=xnwsh
+            - JHIPSTER_SLEEP=30 # gives time for the JHipster Registry to boot before the application
+    xnwsh-mysql-db:
         image: mysql:5.7.20
         volumes:
             - /opt/mysql/db/:/var/lib/mysql/
@@ -50,7 +60,7 @@ services:
             - MYSQL_USER=root
             - TZ=Asia/Shanghai
    #         - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-            - MYSQL_ROOT_PASSWORD=CrrcZnyw
+            - MYSQL_ROOT_PASSWORD=xnwsh
         ports:
             - 3306:3306
         command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
