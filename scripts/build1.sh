@@ -22,3 +22,4 @@ echo "==== building npm install===="
 npm install 
 echo "==== building npm start===="
 npm start
+#test
