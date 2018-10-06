@@ -1,0 +1,29 @@
+{
+  "name": "@delon/acl",
+  "version": "0.0.0-PLACEHOLDER",
+  "author": "cipchk<cipchk@qq.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ng-alain/delon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ng-alain/delon/issues"
+  },
+  "homepage": "https://github.com/ng-alain/delon#readme",
+  "keywords": [
+    "@delon/acl",
+    "angular acl",
+    "ng acl",
+    "ngx acl",
+    "delon",
+    "ng-alain",
+    "alain",
+    "antd",
+    "ng-zorro-antd",
+    "acl",
+    "angular",
+    "component"
+  ],
+  "sideEffects": false
+}
