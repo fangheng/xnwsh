@@ -24,14 +24,23 @@ docker cp ng-app-build:/usr/src/app/dist ./dist/
 
 # 删除编译 Angular 容器
 echo "====  delete Angular contrainer ===="
+docker stop ng-app-build
 docker rm -f ng-app-build
 
 # 构建生产环境镜像
 echo "==== structure prod Image  ===="
-docker build -f  Dockerfile.package -t ng-app .
+docker build -f  Dockerfile.package -t xnwsh-web-image .
 
 # 删除 ng-app-build 镜像
 echo "====  delete Angular Image ===="
 docker rmi -f ng-app-build
 
 echo "==== building completed ===="
+
+
+echo "==== start web image ===="
+docker stop xnwsh-web-app
+docker run -d -p 8080:80 \
+    --name xnwsh-web-app \
+    xnwsh-web-image
+
