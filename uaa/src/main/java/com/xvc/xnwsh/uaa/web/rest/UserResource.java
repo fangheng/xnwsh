@@ -213,7 +213,7 @@ public class UserResource {
 
 
     @ApiOperation(value = "模拟登陆")
-    @Decrypt
+   // @Decrypt
     @RequestMapping(value = "testDecrypt")
     public void testDecrypt(@RequestBody User user){
         System.out.println(user.getFirstName());

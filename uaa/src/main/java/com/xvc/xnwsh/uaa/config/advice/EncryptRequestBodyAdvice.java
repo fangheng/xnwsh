@@ -59,6 +59,9 @@ public class EncryptRequestBodyAdvice implements RequestBodyAdvice {
          boolean isDecrypt = false;
          //判断当前请求是否需要解密
          boolean setUpDecrypt = parameter.getMethod().isAnnotationPresent(Decrypt.class);
+         if(!setUpDecrypt){
+             return inputMessage;
+         }
          //判断数据是否为正常数据请求而不需要解密
          InputStream inputMessageBody = inputMessage.getBody();
          HttpHeaders httpHeaders = inputMessage.getHeaders();
@@ -66,7 +69,7 @@ public class EncryptRequestBodyAdvice implements RequestBodyAdvice {
             decryptHttpInputMessage = new DecryptHttpInputMessage(httpHeaders, messageBody,securityProperties.getCharset());
 
         boolean normalRestIsDecrypt = decryptBody(messageBody, true) == null ? false : true;
-         if (setUpDecrypt && normalRestIsDecrypt) {
+         if (normalRestIsDecrypt) {
               isDecrypt = true;
          }
         if (isDecrypt){
