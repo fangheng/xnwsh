@@ -1,0 +1,64 @@
+version: '2'
+services:
+    apigateway-app:
+        image: xnwsh-apigateway
+        environment:
+            - 'SPRING_PROFILES_ACTIVE=prod,swagger'
+            - 'EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/eureka'
+            - 'SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/config'
+            - 'SPRING_DATASOURCE_URL=jdbc:mysql://apigateway-mysql:3306/apigateway?useUnicode=true&characterEncoding=utf8&useSSL=false'
+            - JHIPSTER_SLEEP=30
+            - JHIPSTER_REGISTRY_PASSWORD=admin
+            - TZ=Asia/Shanghai
+        ports:
+            - '8080:8080'
+    apigateway-mysql:
+        image: 'mysql:5.7.20'
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=apigateway
+            - TZ=Asia/Shanghai
+        command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
+
+    app-app:
+        image: xnwsh-app
+        environment:
+            - 'SPRING_PROFILES_ACTIVE=prod,swagger'
+            - 'EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/eureka'
+            - 'SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/config'
+            - 'SPRING_DATASOURCE_URL=jdbc:mysql://app-mysql:3306/app?useUnicode=true&characterEncoding=utf8&useSSL=false'
+            - JHIPSTER_SLEEP=30
+            - JHIPSTER_REGISTRY_PASSWORD=admin
+    app-mysql:
+        image: 'mysql:5.7.20'
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=app
+            - TZ=Asia/Shanghai
+        command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
+
+    uaa-app:
+        image: xnwsh-uaa
+        environment:
+            - 'SPRING_PROFILES_ACTIVE=prod,swagger'
+            - 'EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/eureka'
+            - 'SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@xnwsh-registry:8761/config'
+            - 'SPRING_DATASOURCE_URL=jdbc:mysql://uaa-mysql:3306/uaa?useUnicode=true&characterEncoding=utf8&useSSL=false'
+            - JHIPSTER_SLEEP=30
+            - JHIPSTER_REGISTRY_PASSWORD=admin
+            - TZ=Asia/Shanghai
+    uaa-mysql:
+        image: 'mysql:5.7.20'
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=uaa
+            - TZ=Asia/Shanghai
+        command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
+
+    xnwsh-registry:
+         extends:
+             file: jhipster-registry.yml
+             service: xnwsh-registry

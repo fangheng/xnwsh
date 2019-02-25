@@ -1,0 +1,4 @@
+com.xvc.xnwsh.uaa.config.annotation.EnableSecurity=\
+com.xvc.xnwsh.uaa.config.advice.EncryptRequestBodyAdvice,\
+com.xvc.xnwsh.uaa.config.advice.EncryptResponseBodyAdvice,\
+com.xvc.xnwsh.uaa.config.auto.SecurityProperties

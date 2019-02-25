@@ -1,0 +1,14 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [
+      "apigateway",
+      "app",
+      "uaa"
+    ],
+    "directoryPath": "../",
+    "gatewayType": "zuul",
+    "monitoring": "no",
+    "serviceDiscoveryType": "eureka",
+    "jwtSecretKey": "ZDIxN2NhMDQxNThiZDdiMGUwZTkzODRmYzllYjc0MTRkOWE5ODVlYjAyYzBkNmNkNTFjYjFjZjQwNGNkNzc2YWRjMTZhYWIzZjk2MTNlYWRmZDhjYzY4MjRmNjE1NDBmYzZiMg=="
+  }
+}

@@ -65,7 +65,15 @@ spring:
         favicon:
             enabled: false
     thymeleaf:
-        mode: XHTML
+        mode: HTML5
+    encrypt:
+        key-store:
+            keyAlias: crrckeystore
+            storeName: keystore.crrc
+            storePass: crrcwithcienet
+            keyPass: crrcwithcienet
+
+
 security:
     basic:
         enabled: false

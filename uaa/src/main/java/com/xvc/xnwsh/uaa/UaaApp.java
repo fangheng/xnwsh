@@ -3,6 +3,7 @@ package com.xvc.xnwsh.uaa;
 import com.xvc.xnwsh.uaa.config.ApplicationProperties;
 import com.xvc.xnwsh.uaa.config.DefaultProfileUtil;
 
+import com.xvc.xnwsh.uaa.config.annotation.EnableSecurity;
 import io.github.jhipster.config.JHipsterConstants;
 
 import org.slf4j.Logger;
@@ -27,6 +28,7 @@ import java.util.Collection;
 @EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class})
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
 @EnableDiscoveryClient
+@EnableSecurity
 public class UaaApp {
 
     private static final Logger log = LoggerFactory.getLogger(UaaApp.class);
